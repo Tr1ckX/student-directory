@@ -7,3 +7,6 @@ puts "Chris H"
 puts "Izzy M"
 puts "Nick D"
 puts "Attila M"
+print "Overall, we have "
+print 6
+print " great student"
