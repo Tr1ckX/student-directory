@@ -31,7 +31,9 @@ end
 def print_out(students)
 
 	students.each.with_index(1) do |student, index|
-		print "#{index} #{student[:name]} (#{student[:cohort]} cohort)\n"
+		if student[:name].start_with?("a")
+			print "#{index} #{student[:name]} (#{student[:cohort]} cohort)\n"
+		end
 	end
 
 end
