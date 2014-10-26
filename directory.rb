@@ -42,7 +42,7 @@ def input_students
 	print "To finish, just hit enter twice.\n"
 	
 	#get the first name
-	name = gets.chomp
+	name = STDIN.gets.chomp
 	
 	#while the name is not empty, repeat this code
 	while !name.empty? do
@@ -52,7 +52,7 @@ def input_students
 		print "Now we have #{@students.length} students.\n"
 		
 		#get another name from the user
-		name = gets.chomp
+		name = STDIN.gets.chomp
 	end
 	
 	#return the array of students
@@ -67,7 +67,7 @@ def interactive_menu
 		
 		
 		# 2. read the input and save it
-		selection = gets.chomp
+		selection = STDIN.gets.chomp
 		
 		# 3. do what user asked
 			case selection
@@ -108,16 +108,36 @@ def save_students
 	file.close
 end
 
-def load_students
+def load_students(filename = "student.csv")
 
-	file = File.open("student.csv", "r")
+	file = File.open(filename, "r")
 	
 	file.readlines.each do |line|
 		name, cohort = line.chomp.split(',')
 		@students << {name: name, cohort: cohort.to_sym}
 	end
+	
 	file.close
 end
 
+def try_load_students
+
+	filename = ARGV.first
+	
+	return if filename.nil?
+	
+	if File.exists?(filename)
+		load_students(filename)
+		puts "Loaded #{@students.length} from #{filename}"
+		
+	else
+		puts "Sorry, #{filename} does not exists!"
+		exit
+	end
+end
+
+
+
+try_load_students
 
 interactive_menu
