@@ -6,7 +6,8 @@ def print_menu
 	# 1. print the menu and ask the user what to do
 		puts "1. Input the students"
 		puts "2. Show the students"
-		puts "3. Save the list to students.csv"
+		puts "3. Save the list to student.csv"
+		puts "4. Load the list from student.csv"
 		puts "9. Exit"
 end
 
@@ -79,6 +80,9 @@ def interactive_menu
 				
 				when "3"
 					save_students
+				
+				when "4"
+					load_students
 					
 				when "9"
 					exit #program termination
@@ -104,7 +108,16 @@ def save_students
 	file.close
 end
 
+def load_students
 
+	file = File.open("student.csv", "r")
+	
+	file.readlines.each do |line|
+		name, cohort = line.chomp.split(',')
+		@students << {name: name, cohort: cohort.to_sym}
+	end
+	file.close
+end
 
 
 interactive_menu
