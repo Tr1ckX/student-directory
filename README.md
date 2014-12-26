@@ -8,4 +8,4 @@ PreCourse Challange 3.
 </div>
 <br>
 
-Learnt skills: how to use terminal (folder/file interactions, env_vars) and basic github commands for version control.  
+Learnt skills: Basic Ruby syntax (functions, variables, user input via terminal, logic fundamentals)
